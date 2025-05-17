@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Registration</title>
+    <style>
+        :root {
+            --primary: #7209b7;
+            --primary-light: #9d4edd;
+            --primary-dark: #560bad;
+            --secondary: #480ca8;
+            --accent: #4cc9f0;
+            --success: #4ade80;
+            --warning: #f72585;
+            --danger: #ef4444;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #cbd5e1;
+            --gray-dark: #334155;
+            --background: #f1f5f9;
+            --card-background: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .register-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            background-color: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .register-footer {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .register-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .register-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .terms input {
+            margin-top: 5px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .terms label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .terms a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+        }
+
+        .divider-line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--gray-light);
+        }
+
+        .divider-text {
+            padding: 0 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gray-light);
+            border-radius: 50%;
+            transition: var(--transition);
+            background-color: white;
+        }
+
+        .social-btn:hover {
+            background-color: var(--gray-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            height: 5px;
+            border-radius: 3px;
+            background-color: var(--gray-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .password-strength-meter {
+            height: 100%;
+            width: 0;
+            background-color: var(--danger);
+            transition: var(--transition);
+        }
+
+        .strength-text {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+        
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+        }
+        
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+        
+        .password-toggle:focus {
+            outline: none;
+        }
+
+        @media (max-width: 600px) {
+            .register-container {
+                padding: 25px;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <div class="logo">
+                <span>📚</span> StudyNotes Hub
+            </div>
+            <p class="subtitle">Create your account</p>
+        </div>
+        
+        <form id="registerForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Choose a username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div style="position: relative;">
+                    <input type="password" id="password" class="form-control" placeholder="Create a password" required>
+                    <button type="button" class="password-toggle" id="passwordToggle" aria-label="Toggle password visibility">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="password-strength">
+                    <div class="password-strength-meter" id="passwordStrengthMeter"></div>
+                </div>
+                <div class="strength-text" id="passwordStrengthText">Password strength</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div style="position: relative;">
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                    <button type="button" class="password-toggle" id="confirmPasswordToggle" aria-label="Toggle password visibility">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-off-icon" style="display: none;">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select id="department" class="form-control" required>
+                    <option value="" disabled selected>Select your department</option>
+                    <option value="computer-science">Computer Science</option>
+                    <option value="mathematics">Mathematics</option>
+                    <option value="physics">Physics</option>
+                    <option value="chemistry">Chemistry</option>
+                    <option value="biology">Biology</option>
+                    <option value="engineering">Engineering</option>
+                    <option value="economics">Economics</option>
+                    <option value="literature">Literature</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" class="form-control" placeholder="Enter your mobile number" required>
+            </div>
+            
+            <div class="terms">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+            
+            <button type="submit" class="btn">Register Now</button>
+        </form>
+        
+        <div class="divider">
+            <div class="divider-line"></div>
+            <span class="divider-text">OR</span>
+            <div class="divider-line"></div>
+        </div>
+        
+        <div class="social-login">
+            <a href="#" class="social-btn" title="Register with Google">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-btn" title="Register with Microsoft">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23" width="23" height="23">
+                    <rect x="1" y="1" width="10" height="10" fill="#f25022"/>
+                    <rect x="12" y="1" width="10" height="10" fill="#7fba00"/>
+                    <rect x="1" y="12" width="10" height="10" fill="#00a4ef"/>
+                    <rect x="12" y="12" width="10" height="10" fill="#ffb900"/>
+                </svg>
+            </a>
+            <a href="#" class="social-btn" title="Register with Apple">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20" height="20">
+                    <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="register-footer">
+            <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Password strength meter
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const strengthMeter = document.getElementById('passwordStrengthMeter');
+        const strengthText = document.getElementById('passwordStrengthText');
+        
+        passwordInput.addEventListener('input', updateStrengthMeter);
+        
+        function updateStrengthMeter() {
+            const password = passwordInput.value;
+            let strength = 0;
+            
+            if (password.length > 0) {
+                // Length check
+                if (password.length >= 8) strength += 20;
+                
+                // Lowercase letters check
+                if (/[a-z]/.test(password)) strength += 20;
+                
+                // Uppercase letters check
+                if (/[A-Z]/.test(password)) strength += 20;
+                
+                // Numbers check
+                if (/[0-9]/.test(password)) strength += 20;
+                
+                // Special characters check
+                if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+            }
+            
+            strengthMeter.style.width = strength + '%';
+            
+            // Set color based on strength
+            if (strength <= 20) {
+                strengthMeter.style.backgroundColor = 'var(--danger)';
+                strengthText.textContent = 'Very Weak';
+            } else if (strength <= 40) {
+                strengthMeter.style.backgroundColor = 'var(--warning)';
+                strengthText.textContent = 'Weak';
+            } else if (strength <= 60) {
+                strengthMeter.style.backgroundColor = 'var(--accent)';
+                strengthText.textContent = 'Medium';
+            } else if (strength <= 80) {
+                strengthMeter.style.backgroundColor = 'var(--primary-light)';
+                strengthText.textContent = 'Strong';
+            } else {
+                strengthMeter.style.backgroundColor = 'var(--success)';
+                strengthText.textContent = 'Very Strong';
+            }
+        }
+        
+        // Password toggle visibility
+        const passwordToggle = document.getElementById('passwordToggle');
+        const confirmPasswordToggle = document.getElementById('confirmPasswordToggle');
+        
+        passwordToggle.addEventListener('click', function() {
+            togglePasswordVisibility(passwordInput, this);
+        });
+        
+        confirmPasswordToggle.addEventListener('click', function() {
+            togglePasswordVisibility(confirmPasswordInput, this);
+        });
+        
+        function togglePasswordVisibility(inputElement, toggleButton) {
+            const type = inputElement.getAttribute('type') === 'password' ? 'text' : 'password';
+            inputElement.setAttribute('type', type);
+            
+            // Toggle icon visibility
+            const eyeIcon = toggleButton.querySelector('.eye-icon');
+            const eyeOffIcon = toggleButton.querySelector('.eye-off-icon');
+            
+            if (type === 'text') {
+                eyeIcon.style.display = 'none';
+                eyeOffIcon.style.display = 'block';
+            } else {
+                eyeIcon.style.display = 'block';
+                eyeOffIcon.style.display = 'none';
+            }
+        }
+        
+        // Form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Password match validation
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = passwordInput.value;
+            const department = document.getElementById('department').value;
+            const mobile = document.getElementById('mobile').value;
+            const termsAccepted = document.getElementById('terms').checked;
+            
+            // You would typically send this data to your server
+            console.log('Registration form submitted:', {
+                firstName,
+                lastName,
+                email,
+                username,
+                password: '********', // Don't log actual password
+                department,
+                mobile,
+                termsAccepted
+            });
+            
+            // For demo purposes, show an alert
+            alert('Registration successful! You can now login.');
+            
+            // Redirect to login page (for demo purposes)
+            // window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

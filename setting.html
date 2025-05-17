@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Settings</title>
+    <link rel="stylesheet" href="/frontend/css/setting.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> StudyNotes Hub
+                </div>
+                <div class="mobile-toggle" id="mobileToggle">☰</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/frontend/html/index.html" class="nav-link">
+                        <i>🏠</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link">
+                        <i>📝</i> My Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link">
+                        <i>🔍</i> Browse Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link">
+                        <i>📈</i> Trending
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link">
+                        <i>🏆</i> Leaderboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link">
+                        <i>⭐</i> Saved Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link">
+                        <i>🤖</i> Study AI
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/setting.html" class="nav-link active">
+                        <i>⚙️</i> Settings
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="page-title">
+                    <h2>Settings</h2>
+                    <p>Manage your account and preferences</p>
+                </div>
+            </div>
+            
+            <div class="settings-container">
+                <div class="settings-nav">
+                    <div class="settings-nav-item active" data-tab="profile">
+                        <span>👤</span> Profile
+                    </div>
+                    <div class="settings-nav-item" data-tab="account">
+                        <span>🔐</span> Account
+                    </div>
+                    <div class="settings-nav-item" data-tab="notifications">
+                        <span>🔔</span> Notifications
+                    </div>
+                    <div class="settings-nav-item" data-tab="appearance">
+                        <span>🎨</span> Appearance
+                    </div>
+                    <div class="settings-nav-item" data-tab="privacy">
+                        <span>🔒</span> Privacy
+                    </div>
+                    <div class="settings-nav-item" data-tab="academic">
+                        <span>🎓</span> Academic Info
+                    </div>
+                </div>
+                
+                <div class="settings-content">
+                    <!-- Profile Settings -->
+                    <div class="settings-tab active" id="profile">
+                        <div class="settings-header">
+                            <h3>Profile Settings</h3>
+                            <p>Manage your personal information</p>
+                        </div>
+                        
+                        <div class="profile-section">
+                            <div class="profile-picture">
+                                <div class="avatar large">JS</div>
+                                <div class="upload-overlay">
+                                    <span>📷</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="displayName">Display Name</label>
+                                <input type="text" id="displayName" value="John Smith" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" class="form-control" rows="3">Computer Science student passionate about algorithms and software development. Sharing notes to help fellow students excel!</textarea>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" value="John" class="form-control">
+                                </div>
+                                <div class="form-group half">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" value="Smith" class="form-control">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" value="john.smith@university.edu" class="form-control">
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button class="btn btn-outline">Cancel</button>
+                                <button class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Account Settings -->
+                    <div class="settings-tab" id="account">
+                        <div class="settings-header">
+                            <h3>Account Settings</h3>
+                            <p>Manage your account security and preferences</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Change Password</h4>
+                            <div class="form-group">
+                                <label for="currentPassword">Current Password</label>
+                                <input type="password" id="currentPassword" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword">New Password</label>
+                                <input type="password" id="newPassword" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmPassword">Confirm New Password</label>
+                                <input type="password" id="confirmPassword" class="form-control">
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary">Update Password</button>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Two-Factor Authentication</h4>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="twoFactorToggle">
+                                <label for="twoFactorToggle">Enable Two-Factor Authentication</label>
+                            </div>
+                            <p class="settings-help-text">Two-factor authentication adds an extra layer of security to your account.</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Linked Accounts</h4>
+                            <div class="linked-account">
+                                <div class="linked-account-info">
+                                    <span class="linked-icon">G</span>
+                                    <div>
+                                        <div class="linked-name">Google</div>
+                                        <div class="linked-email">john.smith@gmail.com</div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline btn-sm">Unlink</button>
+                            </div>
+                            <div class="linked-account">
+                                <div class="linked-account-info">
+                                    <span class="linked-icon">M</span>
+                                    <div>
+                                        <div class="linked-name">Microsoft</div>
+                                        <div class="linked-status">Not Connected</div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline btn-sm">Connect</button>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section danger-zone">
+                            <h4>Danger Zone</h4>
+                            <div class="danger-action">
+                                <div>
+                                    <div class="danger-title">Deactivate Account</div>
+                                    <div class="danger-desc">Temporarily disable your account</div>
+                                </div>
+                                <button class="btn btn-warning">Deactivate</button>
+                            </div>
+                            <div class="danger-action">
+                                <div>
+                                    <div class="danger-title">Delete Account</div>
+                                    <div class="danger-desc">Permanently delete your account and all data</div>
+                                </div>
+                                <button class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notifications Settings -->
+                    <div class="settings-tab" id="notifications">
+                        <div class="settings-header">
+                            <h3>Notification Settings</h3>
+                            <p>Control what notifications you receive</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Email Notifications</h4>
+                            <div class="notification-option">
+                                <div>
+                                    <div class="notification-title">Note Comments</div>
+                                    <div class="notification-desc">Receive emails when someone comments on your notes</div>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="notifyComments" checked>
+                                    <label for="notifyComments"></label>
+                                </div>
+                            </div>
+                            <div class="notification-option">
+                                <div>
+                                    <div class="notification-title">Note Ratings</div>
+                                    <div class="notification-desc">Receive emails when someone rates your notes</div>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="notifyRatings" checked>
+                                    <label for="notifyRatings"></label>
+                                </div>
+                            </div>
+                            <div class="notification-option">
+                                <div>
+                                    <div class="notification-title">Study Reminders</div>
+                                    <div class="notification-desc">Receive emails about your study plan</div>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="notifyReminders" checked>
+                                    <label for="notifyReminders"></label>
+                                </div>
+                            </div>
+                            <div class="notification-option">
+                                <div>
+                                    <div class="notification-title">Newsletter</div>
+                                    <div class="notification-desc">Receive our weekly newsletter with tips and updates</div>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="notifyNewsletter">
+                                    <label for="notifyNewsletter"></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Push Notifications</h4>
+                            <div class="notification-option">
+                                <div>
+                                    <div class="notification-title">Real-time Comments</div>
+                                    <div class="notification-desc">Receive push notifications for new comments</div>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="pushComments" checked>
+                                    <label for="pushComments"></label>
+                                </div>
+                            </div>
+                            <div class="notification-option">
+                                <div>
+                                    <div class="notification-title">New Followers</div>
+                                    <div class="notification-desc">Receive push notifications when someone follows you</div>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="pushFollowers" checked>
+                                    <label for="pushFollowers"></label>
+                                </div>
+                            </div>
+                            <div class="notification-option">
+                                <div>
+                                    <div class="notification-title">Study Plan Alerts</div>
+                                    <div class="notification-desc">Receive push notifications for upcoming study sessions</div>
+                                </div>
+                                <div class="toggle-switch">
+                                    <input type="checkbox" id="pushStudyPlan" checked>
+                                    <label for="pushStudyPlan"></label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save Preferences</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Appearance Settings -->
+                    <div class="settings-tab" id="appearance">
+                        <div class="settings-header">
+                            <h3>Appearance Settings</h3>
+                            <p>Customize how StudyNotes Hub looks for you</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Theme</h4>
+                            <div class="theme-options">
+                                <div class="theme-option selected">
+                                    <div class="theme-preview light-theme"></div>
+                                    <div class="theme-name">Light</div>
+                                </div>
+                                <div class="theme-option">
+                                    <div class="theme-preview dark-theme"></div>
+                                    <div class="theme-name">Dark</div>
+                                </div>
+                                <div class="theme-option">
+                                    <div class="theme-preview system-theme"></div>
+                                    <div class="theme-name">System</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Color Scheme</h4>
+                            <div class="color-options">
+                                <div class="color-option selected">
+                                    <div class="color-preview" style="background-color: #7209b7;"></div>
+                                    <div class="color-name">Purple (Default)</div>
+                                </div>
+                                <div class="color-option">
+                                    <div class="color-preview" style="background-color: #4361ee;"></div>
+                                    <div class="color-name">Blue</div>
+                                </div>
+                                <div class="color-option">
+                                    <div class="color-preview" style="background-color: #4cc9f0;"></div>
+                                    <div class="color-name">Cyan</div>
+                                </div>
+                                <div class="color-option">
+                                    <div class="color-preview" style="background-color: #f72585;"></div>
+                                    <div class="color-name">Pink</div>
+                                </div>
+                                <div class="color-option">
+                                    <div class="color-preview" style="background-color: #4d908e;"></div>
+                                    <div class="color-name">Teal</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Font Size</h4>
+                            <div class="font-size-slider">
+                                <span>A</span>
+                                <input type="range" min="1" max="5" value="3" class="slider" id="fontSizeSlider">
+                                <span>A</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="btn btn-outline">Reset to Default</button>
+                            <button class="btn btn-primary">Save Preferences</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Privacy Settings -->
+                    <div class="settings-tab" id="privacy">
+                        <div class="settings-header">
+                            <h3>Privacy Settings</h3>
+                            <p>Control your privacy and visibility preferences</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Profile Visibility</h4>
+                            <div class="form-group">
+                                <label for="profileVisibility">Who can see my profile</label>
+                                <select id="profileVisibility" class="form-control">
+                                    <option value="everyone">Everyone</option>
+                                    <option value="registered" selected>Registered Users Only</option>
+                                    <option value="followers">Followers Only</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Note Privacy</h4>
+                            <div class="form-group">
+                                <label for="defaultNotePrivacy">Default note privacy setting</label>
+                                <select id="defaultNotePrivacy" class="form-control">
+                                    <option value="public" selected>Public (Anyone can view)</option>
+                                    <option value="restricted">Restricted (Registered users only)</option>
+                                    <option value="private">Private (Only you can view)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Activity Status</h4>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="activityStatus" checked>
+                                <label for="activityStatus">Show when I'm active on StudyNotes Hub</label>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Data Usage</h4>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="analyticsConsent" checked>
+                                <label for="analyticsConsent">Allow StudyNotes Hub to collect anonymous usage data to improve the service</label>
+                            </div>
+                            <p class="settings-help-text">We use this data to improve our features and user experience. No personally identifiable information is included.</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Data Export</h4>
+                            <p>You can request a copy of all your data on StudyNotes Hub.</p>
+                            <button class="btn btn-outline">Request Data Export</button>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save Privacy Settings</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Academic Info Settings -->
+                    <div class="settings-tab" id="academic">
+                        <div class="settings-header">
+                            <h3>Academic Information</h3>
+                            <p>Manage your academic details and preferences</p>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Education</h4>
+                            <div class="form-group">
+                                <label for="institution">Institution</label>
+                                <input type="text" id="institution" value="State University" class="form-control">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="major">Major</label>
+                                    <input type="text" id="major" value="Computer Science" class="form-control">
+                                </div>
+                                <div class="form-group half">
+                                    <label for="year">Year/Level</label>
+                                    <select id="year" class="form-control">
+                                        <option value="freshman">Freshman</option>
+                                        <option value="sophomore">Sophomore</option>
+                                        <option value="junior">Junior</option>
+                                        <option value="senior" selected>Senior</option>
+                                        <option value="graduate">Graduate</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Subjects</h4>
+                            <p>Select subjects you're interested in</p>
+                            <div class="subject-tags">
+                                <div class="subject-tag">Computer Science <span class="remove-tag">×</span></div>
+                                <div class="subject-tag">Mathematics <span class="remove-tag">×</span></div>
+                                <div class="subject-tag">Physics <span class="remove-tag">×</span></div>
+                                <div class="subject-tag">Chemistry <span class="remove-tag">×</span></div>
+                                <div class="add-subject">+ Add Subject</div>
+                            </div>
+                        </div>
+                        
+                        <div class="settings-section">
+                            <h4>Study Preferences</h4>
+                            <div class="form-group">
+                                <label for="studyHours">Weekly study hours target</label>
+                                <input type="number" id="studyHours" value="20" min="1" max="100" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="studyStyle">Preferred study style</label>
+                                <select id="studyStyle" class="form-control">
+                                    <option value="visual">Visual learner</option>
+                                    <option value="auditory">Auditory learner</option>
+                                    <option value="reading" selected>Reading/Writing learner</option>
+                                    <option value="kinesthetic">Kinesthetic learner</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save Academic Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Assistant Panel -->
+    <div class="ai-assistant">
+        <div class="ai-bubble" id="aiToggle">
+            🤖
+        </div>
+        <div class="ai-panel" id="aiPanel">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span>🤖</span> Study AI Assistant
+                </div>
+                <div class="ai-close" id="aiClose">×</div>
+            </div>
+            <div class="ai-content" id="aiContent">
+                <div class="ai-message">
+                    <div class="ai-avatar">🤖</div>
+                    <div class="ai-bubble-message">
+                        Hello John! How can I help you with your settings today?
+                    </div>
+                </div>
+                <div class="ai-suggestion-chips">
+                    <div class="ai-chip">How to change profile picture?</div>
+                    <div class="ai-chip">Privacy recommendations</div>
+                    <div class="ai-chip">Best notification settings</div>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" class="ai-input-field" placeholder="Ask me anything..." id="aiInputField">
+                <button class="ai-send" id="aiSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple script to handle settings tab switching
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.settings-nav-item');
+            const tabContents = document.querySelectorAll('.settings-tab');
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabLinks.forEach(tab => tab.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // AI Assistant toggle
+            const aiToggle = document.getElementById('aiToggle');
+            const aiPanel = document.getElementById('aiPanel');
+            const aiClose = document.getElementById('aiClose');
+            
+            if(aiToggle && aiPanel && aiClose) {
+                aiToggle.addEventListener('click', function() {
+                    aiPanel.classList.toggle('active');
+                });
+                
+                aiClose.addEventListener('click', function() {
+                    aiPanel.classList.remove('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

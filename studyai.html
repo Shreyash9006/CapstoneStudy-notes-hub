@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Study AI</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="/frontend/css/studyai.css">
+    <script src="/frontend/js/studyai.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> StudyNotes Hub
+                </div>
+                <div class="mobile-toggle" id="mobileToggle">☰</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/frontend/html/index.html" class="nav-link">
+                        <i>🏠</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link">
+                        <i>📝</i> My Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link">
+                        <i>🔍</i> Browse Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link">
+                        <i>📈</i> Trending
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link">
+                        <i>🏆</i> Leaderboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link">
+                        <i>⭐</i> Saved Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link active">
+                        <i>🤖</i> Study AI
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/setting.html" class="nav-link">
+                        <i>⚙️</i> Settings
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search for notes, subjects, or users">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="filterBtn">Filter</button>
+                    <a href="/frontend/html/uploadnotes.html">
+                        <button class="btn btn-primary">Upload Notes</button>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Study AI Content -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Study AI Assistant</h3>
+                </div>
+                <div class="study-ai-content">
+                    <div class="study-ai-intro">
+                        <div class="study-ai-icon">🤖</div>
+                        <div class="study-ai-welcome">
+                            <h2>Your Personal AI Study Assistant</h2>
+                            <p>Let our AI assistant help you study smarter, not harder. Get personalized help, recommendations, and answers to your questions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="study-ai-features">
+                        <div class="feature-card">
+                            <div class="feature-icon">📋</div>
+                            <div class="feature-title">Study Plan Generator</div>
+                            <div class="feature-description">Create personalized study plans based on your courses, upcoming exams, and learning style.</div>
+                            <button class="btn btn-primary" id="generatePlanBtn">Generate Study Plan</button>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">❓</div>
+                            <div class="feature-title">Smart Q&A</div>
+                            <div class="feature-description">Ask questions about your study material and get clear, concise answers with explanations.</div>
+                            <button class="btn btn-primary" id="askQuestionBtn">Ask a Question</button>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🧠</div>
+                            <div class="feature-title">Topic Explanations</div>
+                            <div class="feature-description">Get simple explanations for complex topics in your field of study.</div>
+                            <button class="btn btn-primary" id="explainTopicBtn">Explain a Topic</button>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <div class="feature-title">Note Finder</div>
+                            <div class="feature-description">Find the most relevant notes from our database based on your topics of interest.</div>
+                            <button class="btn btn-primary" id="findNotesBtn">Find Notes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Start a Conversation</h3>
+                </div>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="ai-message">
+                            <div class="ai-avatar">🤖</div>
+                            <div class="ai-bubble-message">
+                                Hello! I'm your Study AI Assistant. How can I help you today with your studies?
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <input type="text" class="chat-input" id="chatInput" placeholder="Type your question here...">
+                        <button class="chat-send-btn" id="sendMessageBtn">Send</button>
+                    </div>
+                    
+                    <div class="suggestion-chips">
+                        <div class="suggestion-chip">How to study effectively?</div>
+                        <div class="suggestion-chip">Create a study plan for finals</div>
+                        <div class="suggestion-chip">Explain binary search trees</div>
+                        <div class="suggestion-chip">Find notes for Data Structures</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Recent AI Interactions</h3>
+                </div>
+                <div class="recent-interactions">
+                    <div class="interaction-item">
+                        <div class="interaction-icon">❓</div>
+                        <div class="interaction-content">
+                            <div class="interaction-title">Question about Algorithm Complexity</div>
+                            <div class="interaction-time">2 days ago</div>
+                        </div>
+                        <button class="btn btn-outline interaction-view-btn">View</button>
+                    </div>
+                    
+                    <div class="interaction-item">
+                        <div class="interaction-icon">📋</div>
+                        <div class="interaction-content">
+                            <div class="interaction-title">Data Structures Exam Study Plan</div>
+                            <div class="interaction-time">1 week ago</div>
+                        </div>
+                        <button class="btn btn-outline interaction-view-btn">View</button>
+                    </div>
+                    
+                    <div class="interaction-item">
+                        <div class="interaction-icon">🧠</div>
+                        <div class="interaction-content">
+                            <div class="interaction-title">Explanation of Neural Networks</div>
+                            <div class="interaction-time">2 weeks ago</div>
+                        </div>
+                        <button class="btn btn-outline interaction-view-btn">View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Assistant Panel -->
+    <div class="ai-assistant">
+        <div class="ai-bubble" id="aiToggle">
+            🤖
+            <div class="ai-notification">1</div>
+        </div>
+        <div class="ai-panel" id="aiPanel">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span>🤖</span> Study AI Assistant
+                </div>
+                <div class="ai-close" id="aiClose">×</div>
+            </div>
+            <div class="ai-content" id="aiContent">
+                <div class="ai-message">
+                    <div class="ai-avatar">🤖</div>
+                    <div class="ai-bubble-message">
+                        Hello John! How can I help you with your studies today?
+                    </div>
+                </div>
+                <div class="ai-suggestion-chips">
+                    <div class="ai-chip">How to study for exams?</div>
+                    <div class="ai-chip">Find notes for CS301</div>
+                    <div class="ai-chip">Create a study plan</div>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" class="ai-input-field" placeholder="Ask me anything..." id="aiInputField">
+                <button class="ai-send" id="aiSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/frontend/js/study-ai.js"></script>
+</body>
+</html>

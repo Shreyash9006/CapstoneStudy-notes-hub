@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Upload Notes</title>
+    <link rel="stylesheet" href="/frontend/css/uploadnotes.css">
+    <script src="/frontend/js/uploadnotes.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> <span class="logo-text">StudyNotes Hub</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="/frontend/html/index.html" class="nav-link">
+                        <i>🏠</i> <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link">
+                        <i>📝</i> <span class="nav-text">My Notes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link">
+                        <i>🔍</i> <span class="nav-text">Browse Notes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link">
+                        <i>📈</i> <span class="nav-text">Trending</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link">
+                        <i>🏆</i> <span class="nav-text">Leaderboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link">
+                        <i>⭐</i> <span class="nav-text">Saved Notes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link">
+                        <i>🤖</i> <span class="nav-text">Study AI</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/setting.html" class="nav-link">
+                        <i>⚙️</i> <span class="nav-text">Settings</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search for notes, subjects, or users">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline">Filter</button>
+                </div>
+            </div>
+            
+            <!-- Upload Notes Form -->
+            <div class="upload-container">
+                <div class="upload-header">
+                    <h2 class="upload-title">Upload Study Notes</h2>
+                </div>
+                
+                <form id="uploadForm" class="upload-form">
+                    <div class="form-group">
+                        <label for="noteTitle" class="form-label">Note Title *</label>
+                        <input type="text" id="noteTitle" class="form-input" placeholder="Enter a descriptive title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject *</label>
+                        <select id="subject" class="select-input" required>
+                            <option value="" disabled selected>Select subject</option>
+                            <option value="computer_science">Computer Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="business">Business</option>
+                            <option value="literature">Literature</option>
+                            <option value="history">History</option>
+                            <option value="psychology">Psychology</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course" class="form-label">Course Name</label>
+                        <input type="text" id="course" class="form-input" placeholder="E.g. Introduction to Algorithms">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="noteType" class="form-label">Note Type</label>
+                        <select id="noteType" class="select-input">
+                            <option value="lecture_notes">Lecture Notes</option>
+                            <option value="study_guide">Study Guide</option>
+                            <option value="exam_prep">Exam Prep</option>
+                            <option value="summary">Summary</option>
+                            <option value="practice_problems">Practice Problems</option>
+                            <option value="cheat_sheet">Cheat Sheet</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" class="form-input" placeholder="Briefly describe what these notes cover..."></textarea>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label">Tags</label>
+                        <div id="tagContainer" class="tag-input-container">
+                            <input type="text" id="tagInput" class="tag-input" placeholder="Add tags (press Enter)">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label class="form-label">Upload File *</label>
+                        <div id="fileDropArea" class="file-drop-area">
+                            <div class="file-icon">📄</div>
+                            <div class="file-message">
+                                <strong>Drag and drop</strong> your file here or <span class="file-browse">browse</span>
+                            </div>
+                            <div class="file-info">Supports PDF, DOCX, PPTX, TXT, MD (max 20MB)</div>
+                        </div>
+                        <input type="file" id="fileInput" class="file-input" accept=".pdf,.docx,.pptx,.txt,.md" required>
+                        <div id="selectedFile"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox" id="isPrivate">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="switch-label">Make notes private</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="toggle-switch">
+                            <label class="switch">
+                                <input type="checkbox" id="aiIndexing" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span class="switch-label">Allow AI to analyze for better recommendations</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <button type="button" id="cancelBtn" class="btn btn-outline">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Upload Notes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

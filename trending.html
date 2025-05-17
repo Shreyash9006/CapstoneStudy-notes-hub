@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Trending</title>
+    <link rel="stylesheet" href="/frontend/css/trending.css">
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <script src="/frontend/js/trending.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> StudyNotes Hub
+                </div>
+                <div class="mobile-toggle" id="mobileToggle">☰</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/frontend/html/index.html" class="nav-link">
+                        <i>🏠</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link">
+                        <i>📝</i> My Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link">
+                        <i>🔍</i> Browse Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link active">
+                        <i>📈</i> Trending
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link">
+                        <i>🏆</i> Leaderboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link">
+                        <i>⭐</i> Saved Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link">
+                        <i>🤖</i> Study AI
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/setting.html" class="nav-link">
+                        <i>⚙️</i> Settings
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="page-title">
+                    <h1><span>📈</span> Trending Notes</h1>
+                    <p>Discover the most popular notes from students around the world</p>
+                </div>
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search for trending notes" id="searchInput">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="filterBtn">Filter</button>
+                    <div class="view-toggle">
+                        <button class="view-btn active" id="gridViewBtn" title="Grid View">
+                            <span>▦</span>
+                        </button>
+                        <button class="view-btn" id="listViewBtn" title="List View">
+                            <span>☰</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div class="filter-panel" id="filterPanel">
+                <div class="filter-header">
+                    <h3>Filter Options</h3>
+                    <span class="close-filter" id="closeFilter">×</span>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label>Time Period</label>
+                        <select class="filter-select" id="timeFilter">
+                            <option value="day">Today</option>
+                            <option value="week" selected>This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="all">All Time</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Subject</label>
+                        <select class="filter-select" id="subjectFilter">
+                            <option value="">All Subjects</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="business">Business</option>
+                            <option value="humanities">Humanities</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Note Type</label>
+                        <select class="filter-select" id="typeFilter">
+                            <option value="">All Types</option>
+                            <option value="lecture">Lecture Notes</option>
+                            <option value="summary">Summary</option>
+                            <option value="cheatsheet">Cheat Sheet</option>
+                            <option value="exam">Exam Prep</option>
+                            <option value="tutorial">Tutorial</option>
+                            <option value="assignment">Assignment Solution</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Difficulty Level</label>
+                        <select class="filter-select" id="difficultyFilter">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        <select class="filter-select" id="sortFilter">
+                            <option value="popular">Most Popular</option>
+                            <option value="recent">Most Recent</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="saves">Most Saved</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" id="resetFiltersBtn">Reset</button>
+                        <button class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trending Categories -->
+            <div class="trending-categories">
+                <div class="category-tag active" data-category="all">All</div>
+                <div class="category-tag" data-category="computer-science">Computer Science</div>
+                <div class="category-tag" data-category="mathematics">Mathematics</div>
+                <div class="category-tag" data-category="physics">Physics</div>
+                <div class="category-tag" data-category="chemistry">Chemistry</div>
+                <div class="category-tag" data-category="biology">Biology</div>
+                <div class="category-tag" data-category="engineering">Engineering</div>
+                <div class="category-tag" data-category="business">Business</div>
+                <div class="category-tag" data-category="humanities">Humanities</div>
+            </div>
+            
+            <!-- Trending Notes Grid -->
+            <div class="trending-notes-container grid-view" id="notesContainer">
+                <!-- Top Trending Section -->
+                <div class="top-trending-note">
+                    <div class="top-trending-badge"><span>🔥</span> #1 Trending</div>
+                    <div class="top-trending-content">
+                        <div class="top-trending-img">📝</div>
+                        <div class="top-trending-details">
+                            <h2>Machine Learning: From Basics to Advanced</h2>
+                            <p class="top-trending-info">Computer Science • Advanced • Comprehensive Guide</p>
+                            <div class="author-info">
+                                <div class="author-avatar">SW</div>
+                                <div class="author-name">Sarah Williams</div>
+                                <div class="author-badge badge-expert">Expert</div>
+                            </div>
+                            <p class="top-trending-desc">
+                                A comprehensive collection of notes covering everything from basic ML concepts to advanced 
+                                neural networks. Includes practical examples and code snippets for TensorFlow and PyTorch.
+                            </p>
+                            <div class="top-trending-stats">
+                                <div class="stat"><span>👁️</span> 4.8k views</div>
+                                <div class="stat"><span>⭐</span> 4.9 (324 ratings)</div>
+                                <div class="stat"><span>💬</span> 87 comments</div>
+                                <div class="stat"><span>💾</span> 1.2k saves</div>
+                            </div>
+                            <div class="top-trending-actions">
+                                <button class="btn btn-primary">View Notes</button>
+                                <button class="btn btn-outline save-btn"><span>⭐</span> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regular Trending Notes -->
+                <div class="trending-note-card">
+                    <div class="trending-rank">#2</div>
+                    <div class="note-header" style="background-color: #4cc9f0;">
+                        <div class="note-subject">Mathematics</div>
+                        <div class="note-type">Summary</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Calculus Made Simple: A Visual Approach</div>
+                        <div class="note-info">Advanced • Updated 2 days ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">EW</div>
+                            <div class="author-name">Emily Wong</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 3.2k</div>
+                            <div class="stat"><span>⭐</span> 4.8</div>
+                            <div class="stat"><span>💾</span> 968</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#3</div>
+                    <div class="note-header" style="background-color: #f72585;">
+                        <div class="note-subject">Chemistry</div>
+                        <div class="note-type">Cheat Sheet</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Organic Chemistry Reaction Guide</div>
+                        <div class="note-info">Intermediate • Updated 3 days ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">ML</div>
+                            <div class="author-name">Michael Lee</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 2.8k</div>
+                            <div class="stat"><span>⭐</span> 4.7</div>
+                            <div class="stat"><span>💾</span> 843</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#4</div>
+                    <div class="note-header" style="background-color: #3a0ca3;">
+                        <div class="note-subject">Physics</div>
+                        <div class="note-type">Lecture</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Quantum Physics Core Concepts</div>
+                        <div class="note-info">Advanced • Updated 1 week ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">DP</div>
+                            <div class="author-name">David Parker</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 2.1k</div>
+                            <div class="stat"><span>⭐</span> 4.9</div>
+                            <div class="stat"><span>💾</span> 756</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#5</div>
+                    <div class="note-header" style="background-color: #4361ee;">
+                        <div class="note-subject">Computer Science</div>
+                        <div class="note-type">Tutorial</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Web Development Fundamentals</div>
+                        <div class="note-info">Beginner • Updated 5 days ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">JD</div>
+                            <div class="author-name">Jessica Davis</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 1.9k</div>
+                            <div class="stat"><span>⭐</span> 4.6</div>
+                            <div class="stat"><span>💾</span> 712</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#6</div>
+                    <div class="note-header" style="background-color: #7209b7;">
+                        <div class="note-subject">Biology</div>
+                        <div class="note-type">Summary</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Cell Biology & Genetics</div>
+                        <div class="note-info">Intermediate • Updated 1 week ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">AJ</div>
+                            <div class="author-name">Ashley Johnson</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 1.7k</div>
+                            <div class="stat"><span>⭐</span> 4.5</div>
+                            <div class="stat"><span>💾</span> 694</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#7</div>
+                    <div class="note-header" style="background-color: #f94144;">
+                        <div class="note-subject">Business</div>
+                        <div class="note-type">Exam Prep</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Financial Accounting Essentials</div>
+                        <div class="note-info">Intermediate • Updated 2 weeks ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">RN</div>
+                            <div class="author-name">Robert Nelson</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 1.5k</div>
+                            <div class="stat"><span>⭐</span> 4.4</div>
+                            <div class="stat"><span>💾</span> 581</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#8</div>
+                    <div class="note-header" style="background-color: #f8961e;">
+                        <div class="note-subject">Engineering</div>
+                        <div class="note-type">Lecture</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Structural Analysis Concepts</div>
+                        <div class="note-info">Advanced • Updated 3 weeks ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">TH</div>
+                            <div class="author-name">Thomas Harris</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 1.3k</div>
+                            <div class="stat"><span>⭐</span> 4.7</div>
+                            <div class="stat"><span>💾</span> 542</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#9</div>
+                    <div class="note-header" style="background-color: #277da1;">
+                        <div class="note-subject">Humanities</div>
+                        <div class="note-type">Summary</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">World History: Modern Era</div>
+                        <div class="note-info">Beginner • Updated 2 weeks ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">LM</div>
+                            <div class="author-name">Laura Morgan</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 1.2k</div>
+                            <div class="stat"><span>⭐</span> 4.3</div>
+                            <div class="stat"><span>💾</span> 498</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="trending-note-card">
+                    <div class="trending-rank">#10</div>
+                    <div class="note-header" style="background-color: #ff87ab;">
+                        <div class="note-subject">Computer Science</div>
+                        <div class="note-type">Cheat Sheet</div>
+                    </div>
+                    <div class="note-content">
+                        <div class="note-title">Data Structures Quick Reference</div>
+                        <div class="note-info">Intermediate • Updated 4 days ago</div>
+                        <div class="author-info">
+                            <div class="author-avatar">JS</div>
+                            <div class="author-name">John Smith</div>
+                        </div>
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 1.1k</div>
+                            <div class="stat"><span>⭐</span> 4.5</div>
+                            <div class="stat"><span>💾</span> 476</div>
+                        </div>
+                        <div class="note-actions">
+                            <button class="btn btn-primary btn-sm">View</button>
+                            <button class="btn btn-outline btn-sm save-btn"><span>⭐</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button class="btn btn-outline load-more-btn" id="loadMoreBtn">Load More</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Assistant Panel -->
+    <div class="ai-assistant">
+        <div class="ai-bubble" id="aiToggle">
+            🤖
+        </div>
+        <div class="ai-panel" id="aiPanel">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span>🤖</span> Study AI Assistant
+                </div>
+                <div class="ai-close" id="aiClose">×</div>
+            </div>
+            <div class="ai-content" id="aiContent">
+                <div class="ai-message">
+                    <div class="ai-avatar">🤖</div>
+                    <div class="ai-bubble-message">
+                        Looking for trending notes? I can help you find the best resources for your specific needs. What subject are you interested in?
+                    </div>
+                </div>
+                <div class="ai-suggestion-chips">
+                    <div class="ai-chip">Recommend notes for me</div>
+                    <div class="ai-chip">Filter by my subjects</div>
+                    <div class="ai-chip">Most popular this week</div>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" class="ai-input-field" placeholder="Ask me anything..." id="aiInputField">
+                <button class="ai-send" id="aiSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

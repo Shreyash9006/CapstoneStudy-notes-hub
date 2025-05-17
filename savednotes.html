@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Saved Notes</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="/frontend/css/savednotes.css">
+    <script src="/frontend/js/index.js"></script>
+    <script src="/frontend/js/savednotes.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> StudyNotes Hub
+                </div>
+                <div class="mobile-toggle" id="mobileToggle">☰</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/frontend\html\index.html" class="nav-link">
+                        <i>🏠</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link">
+                        <i>📝</i> My Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link">
+                        <i>🔍</i> Browse Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link">
+                        <i>📈</i> Trending
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link">
+                        <i>🏆</i> Leaderboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link active">
+                        <i>⭐</i> Saved Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link">
+                        <i>🤖</i> Study AI
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i>⚙️</i> Settings
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search in saved notes">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="filterBtn">Filter</button>
+                    <button class="btn btn-primary">Organize Collections</button>
+                </div>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div class="filter-panel" id="filterPanel">
+                <div class="filter-header">
+                    <h3>Filter Options</h3>
+                    <span class="close-filter" id="closeFilter">×</span>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label>Subject</label>
+                        <select class="filter-select">
+                            <option value="">All Subjects</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Note Type</label>
+                        <select class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="lecture">Lecture Notes</option>
+                            <option value="summary">Summary</option>
+                            <option value="cheatsheet">Cheat Sheet</option>
+                            <option value="exam">Exam Prep</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Collection</label>
+                        <select class="filter-select">
+                            <option value="">All Collections</option>
+                            <option value="finals">Finals Prep</option>
+                            <option value="midterms">Midterm Materials</option>
+                            <option value="research">Research References</option>
+                            <option value="important">Important</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-outline">Reset</button>
+                        <button class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Collections Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Your Collections</h3>
+                    <a href="#" class="see-all">Manage Collections</a>
+                </div>
+                <div class="subjects-grid">
+                    <div class="subject-card">
+                        <div class="subject-icon" style="background-color: var(--warning);">📚</div>
+                        <div class="subject-details">
+                            <div class="subject-name">Finals Prep</div>
+                            <div class="subject-count">8 notes</div>
+                        </div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon" style="background-color: var(--primary);">📝</div>
+                        <div class="subject-details">
+                            <div class="subject-name">Midterm Materials</div>
+                            <div class="subject-count">5 notes</div>
+                        </div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon" style="background-color: var(--accent);">🔬</div>
+                        <div class="subject-details">
+                            <div class="subject-name">Research References</div>
+                            <div class="subject-count">3 notes</div>
+                        </div>
+                    </div>
+                    <div class="subject-card">
+                        <div class="subject-icon" style="background-color: var(--danger);">⚠️</div>
+                        <div class="subject-details">
+                            <div class="subject-name">Important</div>
+                            <div class="subject-count">4 notes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Saved Notes List -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">All Saved Notes</h3>
+                    <div class="header-actions">
+                        <select class="filter-select" style="width: auto;">
+                            <option value="recent">Recently Saved</option>
+                            <option value="name">Name (A-Z)</option>
+                            <option value="subject">Subject</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="note-list">
+                    <div class="note-card">
+                        <div class="note-header">
+                            <div class="note-subject">Computer Science</div>
+                            <div class="note-type">Lecture</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Machine Learning Fundamentals</div>
+                            <div class="note-subject">CS401 - Neural Networks</div>
+                            <div class="note-stats">
+                                <div class="stat"><span>👤</span> Sarah Williams</div>
+                                <div class="stat"><span>⭐</span> 4.9</div>
+                                <div class="stat"><span>💾</span> May 10, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-header" style="background-color: #4cc9f0;">
+                            <div class="note-subject">Mathematics</div>
+                            <div class="note-type">Summary</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Differential Equations - Complete Guide</div>
+                            <div class="note-subject">MATH350 - Final Review</div>
+                            <div class="note-stats">
+                                <div class="stat"><span>👤</span> Mike Johnson</div>
+                                <div class="stat"><span>⭐</span> 4.7</div>
+                                <div class="stat"><span>💾</span> May 8, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-header" style="background-color: #f72585;">
+                            <div class="note-subject">Physics</div>
+                            <div class="note-type">Cheat Sheet</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Thermodynamics Laws & Applications</div>
+                            <div class="note-subject">PHYS280 - Midterm Review</div>
+                            <div class="note-stats">
+                                <div class="stat"><span>👤</span> Amy Liu</div>
+                                <div class="stat"><span>⭐</span> 4.8</div>
+                                <div class="stat"><span>💾</span> May 5, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-header" style="background-color: #4ade80;">
+                            <div class="note-subject">Chemistry</div>
+                            <div class="note-type">Exam Prep</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Organic Chemistry Reactions Catalog</div>
+                            <div class="note-subject">CHEM301 - Comprehensive Guide</div>
+                            <div class="note-stats">
+                                <div class="stat"><span>👤</span> David Parker</div>
+                                <div class="stat"><span>⭐</span> 4.6</div>
+                                <div class="stat"><span>💾</span> April 28, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-header" style="background-color: #480ca8;">
+                            <div class="note-subject">Computer Science</div>
+                            <div class="note-type">Tutorial</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Database Systems - SQL Mastery</div>
+                            <div class="note-subject">CS350 - Advanced SQL</div>
+                            <div class="note-stats">
+                                <div class="stat"><span>👤</span> Emily Wilson</div>
+                                <div class="stat"><span>⭐</span> 4.9</div>
+                                <div class="stat"><span>💾</span> April 25, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-header" style="background-color: #ef4444;">
+                            <div class="note-subject">Biology</div>
+                            <div class="note-type">Summary</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Cell Biology & Genetics</div>
+                            <div class="note-subject">BIO210 - Comprehensive Review</div>
+                            <div class="note-stats">
+                                <div class="stat"><span>👤</span> James Thompson</div>
+                                <div class="stat"><span>⭐</span> 4.5</div>
+                                <div class="stat"><span>💾</span> April 20, 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <button class="btn btn-outline">Load More</button>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Recently Viewed Saved Notes</h3>
+                </div>
+                <div class="trending-section">
+                    <div class="trending-item">
+                        <div class="trending-img">📝</div>
+                        <div class="trending-details">
+                            <h4>Machine Learning Fundamentals</h4>
+                            <p>Computer Science • Advanced</p>
+                            <div class="trending-stats">
+                                <div class="stat"><span>👁️</span> Last viewed 2 hours ago</div>
+                                <div class="stat"><span>📚</span> Finals Prep</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-img">📝</div>
+                        <div class="trending-details">
+                            <h4>Differential Equations - Complete Guide</h4>
+                            <p>Mathematics • Advanced</p>
+                            <div class="trending-stats">
+                                <div class="stat"><span>👁️</span> Last viewed yesterday</div>
+                                <div class="stat"><span>📚</span> Finals Prep</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="trending-item">
+                        <div class="trending-img">📝</div>
+                        <div class="trending-details">
+                            <h4>Database Systems - SQL Mastery</h4>
+                            <p>Computer Science • Intermediate</p>
+                            <div class="trending-stats">
+                                <div class="stat"><span>👁️</span> Last viewed 3 days ago</div>
+                                <div class="stat"><span>📚</span> Research References</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Assistant Panel -->
+    <div class="ai-assistant">
+        <div class="ai-bubble" id="aiToggle">
+            🤖
+            <div class="ai-notification">1</div>
+        </div>
+        <div class="ai-panel" id="aiPanel">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span>🤖</span> Study AI Assistant
+                </div>
+                <div class="ai-close" id="aiClose">×</div>
+            </div>
+            <div class="ai-content" id="aiContent">
+                <div class="ai-message">
+                    <div class="ai-avatar">🤖</div>
+                    <div class="ai-bubble-message">
+                        I notice you're checking your saved notes. Would you like me to recommend some study material based on your upcoming exams?
+                    </div>
+                </div>
+                <div class="ai-suggestion-chips">
+                    <div class="ai-chip">Create study plan</div>
+                    <div class="ai-chip">Find similar notes</div>
+                    <div class="ai-chip">Quiz me on these topics</div>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" class="ai-input-field" placeholder="Ask me anything..." id="aiInputField">
+                <button class="ai-send" id="aiSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

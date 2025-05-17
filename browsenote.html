@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Browse Notes</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="/frontend/css/browsenotes.css">
+    <script src="/frontend/js/index.js"></script>
+    <script src="/frontend/js/browsenotes.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> StudyNotes Hub
+                </div>
+                <div class="mobile-toggle" id="mobileToggle">☰</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/frontend/html/index.html" class="nav-link">
+                        <i>🏠</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link">
+                        <i>📝</i> My Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link active">
+                        <i>🔍</i> Browse Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link">
+                        <i>📈</i> Trending
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link">
+                        <i>🏆</i> Leaderboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link">
+                        <i>⭐</i> Saved Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link">
+                        <i>🤖</i> Study AI
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i>⚙️</i> Settings
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search for notes, subjects, or users">
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="filterBtn">Filter</button>
+                    <button class="btn btn-primary" id="viewModeBtn">
+                        <span id="viewModeIcon">📊</span> <span id="viewModeText">Grid View</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div class="filter-panel" id="filterPanel">
+                <div class="filter-header">
+                    <h3>Filter Options</h3>
+                    <span class="close-filter" id="closeFilter">×</span>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label>Subject</label>
+                        <select class="filter-select" id="subjectFilter">
+                            <option value="">All Subjects</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="english">English</option>
+                            <option value="history">History</option>
+                            <option value="economics">Economics</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Note Type</label>
+                        <select class="filter-select" id="noteTypeFilter">
+                            <option value="">All Types</option>
+                            <option value="lecture">Lecture Notes</option>
+                            <option value="summary">Summary</option>
+                            <option value="cheatsheet">Cheat Sheet</option>
+                            <option value="exam">Exam Prep</option>
+                            <option value="tutorial">Tutorial</option>
+                            <option value="lab">Lab Report</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Difficulty Level</label>
+                        <select class="filter-select" id="difficultyFilter">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        <select class="filter-select" id="sortFilter">
+                            <option value="recent">Most Recent</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="downloads">Most Downloaded</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" id="resetFiltersBtn">Reset</button>
+                        <button class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Browse Notes Content -->
+            <div class="browse-content">
+                <div class="browse-header">
+                    <h2>Browse Notes</h2>
+                    <div class="browse-stats">
+                        <span id="resultsCount">Showing 36 results</span>
+                    </div>
+                </div>
+                
+                <!-- Category Chips -->
+                <div class="category-chips" id="categoryChips">
+                    <div class="category-chip active" data-category="all">All Notes</div>
+                    <div class="category-chip" data-category="computer-science">Computer Science</div>
+                    <div class="category-chip" data-category="mathematics">Mathematics</div>
+                    <div class="category-chip" data-category="physics">Physics</div>
+                    <div class="category-chip" data-category="chemistry">Chemistry</div>
+                    <div class="category-chip" data-category="biology">Biology</div>
+                    <div class="category-chip more-chip" id="moreCategories">More +</div>
+                </div>
+                
+                <!-- Active Filters -->
+                <div class="active-filters" id="activeFilters">
+                    <div class="filter-tag">Computer Science <span class="remove-filter">×</span></div>
+                    <div class="filter-tag">Lecture Notes <span class="remove-filter">×</span></div>
+                    <div class="filter-tag">Intermediate <span class="remove-filter">×</span></div>
+                    <div class="clear-all">Clear All</div>
+                </div>
+                
+                <!-- Notes Grid -->
+                <div class="notes-grid" id="notesGrid">
+                    <!-- Note Card 1 -->
+                    <div class="browse-note-card" data-category="computer-science" data-type="lecture" data-level="intermediate">
+                        <div class="note-header" style="background-color: var(--primary);">
+                            <div class="note-subject">Computer Science</div>
+                            <div class="note-type">Lecture</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Data Structures & Algorithms</div>
+                            <div class="note-subtitle">CS301 - Week 8</div>
+                            <div class="note-preview">
+                                Comprehensive notes covering binary trees, heaps, and graph algorithms...
+                            </div>
+                            <div class="note-meta">
+                                <div class="note-author">
+                                    <div class="author-avatar">MJ</div>
+                                    <div>Mike Johnson</div>
+                                </div>
+                                <div class="note-stats">
+                                    <div class="stat"><span>👁️</span> 1.2k</div>
+                                    <div class="stat"><span>⭐</span> 4.8</div>
+                                    <div class="stat"><span>💬</span> 24</div>
+                                </div>
+                            </div>
+                            <div class="note-actions">
+                                <button class="note-action-btn"><span>📥</span> Download</button>
+                                <button class="note-action-btn note-save-btn"><span>⭐</span> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note Card 2 -->
+                    <div class="browse-note-card" data-category="mathematics" data-type="summary" data-level="advanced">
+                        <div class="note-header" style="background-color: #4cc9f0;">
+                            <div class="note-subject">Mathematics</div>
+                            <div class="note-type">Summary</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Multivariable Calculus</div>
+                            <div class="note-subtitle">MATH345 - Final Review</div>
+                            <div class="note-preview">
+                                Complete summary of multiple integrals, vector calculus, and Stokes' theorem...
+                            </div>
+                            <div class="note-meta">
+                                <div class="note-author">
+                                    <div class="author-avatar">AL</div>
+                                    <div>Amy Liu</div>
+                                </div>
+                                <div class="note-stats">
+                                    <div class="stat"><span>👁️</span> 875</div>
+                                    <div class="stat"><span>⭐</span> 4.9</div>
+                                    <div class="stat"><span>💬</span> 18</div>
+                                </div>
+                            </div>
+                            <div class="note-actions">
+                                <button class="note-action-btn"><span>📥</span> Download</button>
+                                <button class="note-action-btn note-save-btn"><span>⭐</span> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note Card 3 -->
+                    <div class="browse-note-card" data-category="physics" data-type="cheatsheet" data-level="intermediate">
+                        <div class="note-header" style="background-color: #f72585;">
+                            <div class="note-subject">Physics</div>
+                            <div class="note-type">Cheat Sheet</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Thermodynamics</div>
+                            <div class="note-subtitle">PHYS201 - Complete Reference</div>
+                            <div class="note-preview">
+                                One-page cheat sheet with all essential thermodynamics formulas and laws...
+                            </div>
+                            <div class="note-meta">
+                                <div class="note-author">
+                                    <div class="author-avatar">DP</div>
+                                    <div>David Parker</div>
+                                </div>
+                                <div class="note-stats">
+                                    <div class="stat"><span>👁️</span> 2.4k</div>
+                                    <div class="stat"><span>⭐</span> 4.7</div>
+                                    <div class="stat"><span>💬</span> 32</div>
+                                </div>
+                            </div>
+                            <div class="note-actions">
+                                <button class="note-action-btn"><span>📥</span> Download</button>
+                                <button class="note-action-btn note-save-btn"><span>⭐</span> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note Card 4 -->
+                    <div class="browse-note-card" data-category="biology" data-type="exam" data-level="advanced">
+                        <div class="note-header" style="background-color: #4cc9f0;">
+                            <div class="note-subject">Biology</div>
+                            <div class="note-type">Exam Prep</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Molecular Biology</div>
+                            <div class="note-subtitle">BIO410 - Final Exam Prep</div>
+                            <div class="note-preview">
+                                Comprehensive study guide for DNA replication, transcription, and translation...
+                            </div>
+                            <div class="note-meta">
+                                <div class="note-author">
+                                    <div class="author-avatar">SW</div>
+                                    <div>Sarah Williams</div>
+                                </div>
+                                <div class="note-stats">
+                                    <div class="stat"><span>👁️</span> 1.5k</div>
+                                    <div class="stat"><span>⭐</span> 4.9</div>
+                                    <div class="stat"><span>💬</span> 29</div>
+                                </div>
+                            </div>
+                            <div class="note-actions">
+                                <button class="note-action-btn"><span>📥</span> Download</button>
+                                <button class="note-action-btn note-save-btn"><span>⭐</span> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note Card 5 -->
+                    <div class="browse-note-card" data-category="chemistry" data-type="summary" data-level="beginner">
+                        <div class="note-header" style="background-color: #7209b7;">
+                            <div class="note-subject">Chemistry</div>
+                            <div class="note-type">Summary</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Organic Chemistry Basics</div>
+                            <div class="note-subtitle">CHEM201 - Introduction</div>
+                            <div class="note-preview">
+                                Clear, beginner-friendly introduction to organic compounds and reactions...
+                            </div>
+                            <div class="note-meta">
+                                <div class="note-author">
+                                    <div class="author-avatar">JD</div>
+                                    <div>Jake Davis</div>
+                                </div>
+                                <div class="note-stats">
+                                    <div class="stat"><span>👁️</span> 953</div>
+                                    <div class="stat"><span>⭐</span> 4.6</div>
+                                    <div class="stat"><span>💬</span> 15</div>
+                                </div>
+                            </div>
+                            <div class="note-actions">
+                                <button class="note-action-btn"><span>📥</span> Download</button>
+                                <button class="note-action-btn note-save-btn"><span>⭐</span> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note Card 6 -->
+                    <div class="browse-note-card" data-category="computer-science" data-type="tutorial" data-level="intermediate">
+                        <div class="note-header" style="background-color: var(--primary);">
+                            <div class="note-subject">Computer Science</div>
+                            <div class="note-type">Tutorial</div>
+                        </div>
+                        <div class="note-content">
+                            <div class="note-title">Web Development Fundamentals</div>
+                            <div class="note-subtitle">CS245 - HTML/CSS/JS Guide</div>
+                            <div class="note-preview">
+                                Step-by-step tutorial for building responsive websites with modern techniques...
+                            </div>
+                            <div class="note-meta">
+                                <div class="note-author">
+                                    <div class="author-avatar">ET</div>
+                                    <div>Emma Thompson</div>
+                                </div>
+                                <div class="note-stats">
+                                    <div class="stat"><span>👁️</span> 3.1k</div>
+                                    <div class="stat"><span>⭐</span> 4.8</div>
+                                    <div class="stat"><span>💬</span> 47</div>
+                                </div>
+                            </div>
+                            <div class="note-actions">
+                                <button class="note-action-btn"><span>📥</span> Download</button>
+                                <button class="note-action-btn note-save-btn"><span>⭐</span> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- List View -->
+                <div class="notes-list" id="notesList">
+                    <!-- Note List Item 1 -->
+                    <div class="note-list-item" data-category="computer-science" data-type="lecture" data-level="intermediate">
+                        <div class="note-list-icon" style="background-color: var(--primary);">
+                            <span>📝</span>
+                        </div>
+                        <div class="note-list-content">
+                            <div class="note-list-header">
+                                <div class="note-list-title">Data Structures & Algorithms</div>
+                                <div class="note-list-badges">
+                                    <span class="badge">Computer Science</span>
+                                    <span class="badge">Lecture</span>
+                                    <span class="badge">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="note-list-subtitle">CS301 - Week 8</div>
+                            <div class="note-list-preview">
+                                Comprehensive notes covering binary trees, heaps, and graph algorithms. Includes example problems and solutions.
+                            </div>
+                            <div class="note-list-meta">
+                                <div class="note-list-author">
+                                    <div class="author-avatar-small">MJ</div>
+                                    <div>Mike Johnson</div>
+                                </div>
+                                <div class="note-list-stats">
+                                    <div class="stat"><span>👁️</span> 1.2k</div>
+                                    <div class="stat"><span>⭐</span> 4.8</div>
+                                    <div class="stat"><span>💬</span> 24</div>
+                                </div>
+                                <div class="note-list-actions">
+                                    <button class="btn btn-sm btn-outline"><span>📥</span> Download</button>
+                                    <button class="btn btn-sm btn-outline"><span>⭐</span> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note List Item 2 -->
+                    <div class="note-list-item" data-category="mathematics" data-type="summary" data-level="advanced">
+                        <div class="note-list-icon" style="background-color: #4cc9f0;">
+                            <span>📝</span>
+                        </div>
+                        <div class="note-list-content">
+                            <div class="note-list-header">
+                                <div class="note-list-title">Multivariable Calculus</div>
+                                <div class="note-list-badges">
+                                    <span class="badge">Mathematics</span>
+                                    <span class="badge">Summary</span>
+                                    <span class="badge">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="note-list-subtitle">MATH345 - Final Review</div>
+                            <div class="note-list-preview">
+                                Complete summary of multiple integrals, vector calculus, and Stokes' theorem. Includes practice problems with full solutions.
+                            </div>
+                            <div class="note-list-meta">
+                                <div class="note-list-author">
+                                    <div class="author-avatar-small">AL</div>
+                                    <div>Amy Liu</div>
+                                </div>
+                                <div class="note-list-stats">
+                                    <div class="stat"><span>👁️</span> 875</div>
+                                    <div class="stat"><span>⭐</span> 4.9</div>
+                                    <div class="stat"><span>💬</span> 18</div>
+                                </div>
+                                <div class="note-list-actions">
+                                    <button class="btn btn-sm btn-outline"><span>📥</span> Download</button>
+                                    <button class="btn btn-sm btn-outline"><span>⭐</span> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note List Item 3 -->
+                    <div class="note-list-item" data-category="physics" data-type="cheatsheet" data-level="intermediate">
+                        <div class="note-list-icon" style="background-color: #f72585;">
+                            <span>📝</span>
+                        </div>
+                        <div class="note-list-content">
+                            <div class="note-list-header">
+                                <div class="note-list-title">Thermodynamics</div>
+                                <div class="note-list-badges">
+                                    <span class="badge">Physics</span>
+                                    <span class="badge">Cheat Sheet</span>
+                                    <span class="badge">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="note-list-subtitle">PHYS201 - Complete Reference</div>
+                            <div class="note-list-preview">
+                                One-page cheat sheet with all essential thermodynamics formulas and laws. Perfect for quick reference during exams.
+                            </div>
+                            <div class="note-list-meta">
+                                <div class="note-list-author">
+                                    <div class="author-avatar-small">DP</div>
+                                    <div>David Parker</div>
+                                </div>
+                                <div class="note-list-stats">
+                                    <div class="stat"><span>👁️</span> 2.4k</div>
+                                    <div class="stat"><span>⭐</span> 4.7</div>
+                                    <div class="stat"><span>💬</span> 32</div>
+                                </div>
+                                <div class="note-list-actions">
+                                    <button class="btn btn-sm btn-outline"><span>📥</span> Download</button>
+                                    <button class="btn btn-sm btn-outline"><span>⭐</span> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note List Item 4 -->
+                    <div class="note-list-item" data-category="biology" data-type="exam" data-level="advanced">
+                        <div class="note-list-icon" style="background-color: #4cc9f0;">
+                            <span>📝</span>
+                        </div>
+                        <div class="note-list-content">
+                            <div class="note-list-header">
+                                <div class="note-list-title">Molecular Biology</div>
+                                <div class="note-list-badges">
+                                    <span class="badge">Biology</span>
+                                    <span class="badge">Exam Prep</span>
+                                    <span class="badge">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="note-list-subtitle">BIO410 - Final Exam Prep</div>
+                            <div class="note-list-preview">
+                                Comprehensive study guide for DNA replication, transcription, and translation. Includes diagrams and key concepts.
+                            </div>
+                            <div class="note-list-meta">
+                                <div class="note-list-author">
+                                    <div class="author-avatar-small">SW</div>
+                                    <div>Sarah Williams</div>
+                                </div>
+                                <div class="note-list-stats">
+                                    <div class="stat"><span>👁️</span> 1.5k</div>
+                                    <div class="stat"><span>⭐</span> 4.9</div>
+                                    <div class="stat"><span>💬</span> 29</div>
+                                </div>
+                                <div class="note-list-actions">
+                                    <button class="btn btn-sm btn-outline"><span>📥</span> Download</button>
+                                    <button class="btn btn-sm btn-outline"><span>⭐</span> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note List Item 5 -->
+                    <div class="note-list-item" data-category="chemistry" data-type="summary" data-level="beginner">
+                        <div class="note-list-icon" style="background-color: #7209b7;">
+                            <span>📝</span>
+                        </div>
+                        <div class="note-list-content">
+                            <div class="note-list-header">
+                                <div class="note-list-title">Organic Chemistry Basics</div>
+                                <div class="note-list-badges">
+                                    <span class="badge">Chemistry</span>
+                                    <span class="badge">Summary</span>
+                                    <span class="badge">Beginner</span>
+                                </div>
+                            </div>
+                            <div class="note-list-subtitle">CHEM201 - Introduction</div>
+                            <div class="note-list-preview">
+                                Clear, beginner-friendly introduction to organic compounds and reactions. Perfect for first-year chemistry students.
+                            </div>
+                            <div class="note-list-meta">
+                                <div class="note-list-author">
+                                    <div class="author-avatar-small">JD</div>
+                                    <div>Jake Davis</div>
+                                </div>
+                                <div class="note-list-stats">
+                                    <div class="stat"><span>👁️</span> 953</div>
+                                    <div class="stat"><span>⭐</span> 4.6</div>
+                                    <div class="stat"><span>💬</span> 15</div>
+                                </div>
+                                <div class="note-list-actions">
+                                    <button class="btn btn-sm btn-outline"><span>📥</span> Download</button>
+                                    <button class="btn btn-sm btn-outline"><span>⭐</span> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Note List Item 6 -->
+                    <div class="note-list-item" data-category="computer-science" data-type="tutorial" data-level="intermediate">
+                        <div class="note-list-icon" style="background-color: var(--primary);">
+                            <span>📝</span>
+                        </div>
+                        <div class="note-list-content">
+                            <div class="note-list-header">
+                                <div class="note-list-title">Web Development Fundamentals</div>
+                                <div class="note-list-badges">
+                                    <span class="badge">Computer Science</span>
+                                    <span class="badge">Tutorial</span>
+                                    <span class="badge">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="note-list-subtitle">CS245 - HTML/CSS/JS Guide</div>
+                            <div class="note-list-preview">
+                                Step-by-step tutorial for building responsive websites with modern techniques. Includes code examples and best practices.
+                            </div>
+                            <div class="note-list-meta">
+                                <div class="note-list-author">
+                                    <div class="author-avatar-small">ET</div>
+                                    <div>Emma Thompson</div>
+                                </div>
+                                <div class="note-list-stats">
+                                    <div class="stat"><span>👁️</span> 3.1k</div>
+                                    <div class="stat"><span>⭐</span> 4.8</div>
+                                    <div class="stat"><span>💬</span> 47</div>
+                                </div>
+                                <div class="note-list-actions">
+                                    <button class="btn btn-sm btn-outline"><span>📥</span> Download</button>
+                                    <button class="btn btn-sm btn-outline"><span>⭐</span> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled><span>◀</span></button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">5</button>
+                    <button class="pagination-btn"><span>▶</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Assistant Panel -->
+    <div class="ai-assistant">
+        <div class="ai-bubble" id="aiToggle">
+            🤖
+            <div class="ai-notification">1</div>
+        </div>
+        <div class="ai-panel" id="aiPanel">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span>🤖</span> Study AI Assistant
+                </div>
+                <div class="ai-close" id="aiClose">×</div>
+            </div>
+            <div class="ai-content" id="aiContent">
+                <div class="ai-message">
+                    <div class="ai-avatar">🤖</div>
+                    <div class="ai-bubble-message">
+                        Looking for notes to study? Let me help you find exactly what you need!
+                    </div>
+                </div>
+                <div class="ai-suggestion-chips">
+                    <div class="ai-chip">Recommend CS notes</div>
+                    <div class="ai-chip">Find beginner math notes</div>
+                    <div class="ai-chip">Best physics cheat sheets</div>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" class="ai-input-field" placeholder="Ask me anything..." id="aiInputField">
+                <button class="ai-send" id="aiSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="browse-notes.js"></script>
+</body>
+</html>

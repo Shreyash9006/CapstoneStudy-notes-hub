@@ -1,0 +1,469 @@
+.collections-section {
+    margin-bottom: 24px;
+}
+
+.subject-card {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.subject-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.subject-card:hover::after {
+    width: 100%;
+}
+
+.subject-card.active {
+    background-color: rgba(114, 9, 183, 0.1);
+}
+
+.subject-card .subject-icon {
+    transition: transform 0.3s ease;
+}
+
+.subject-card:hover .subject-icon {
+    transform: scale(1.1);
+}
+
+.subject-count {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.subject-count::before {
+    content: '📄';
+    font-size: 0.8rem;
+}
+
+/* Note card enhancements for the saved notes page */
+.note-card {
+    position: relative;
+}
+
+.note-card .note-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    display: flex;
+    gap: 8px;
+}
+
+.note-card:hover .note-actions {
+    opacity: 1;
+}
+
+.note-action-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    backdrop-filter: blur(2px);
+    transition: var(--transition);
+}
+
+.note-action-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.note-card .collection-tag {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: var(--primary-light);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+/* Enhanced filters for saved notes */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--gray-light);
+    background-color: var(--card-background);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(114, 9, 183, 0.1);
+}
+
+.view-toggle {
+    display: flex;
+    align-items: center;
+    background-color: var(--background);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.view-toggle-btn {
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.view-toggle-btn.active {
+    background-color: var(--card-background);
+    box-shadow: var(--shadow);
+}
+
+/* Empty state styling */
+.empty-state {
+    padding: 40px 20px;
+    text-align: center;
+    display: none;
+}
+
+.empty-state.active {
+    display: block;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    color: var(--gray-light);
+}
+
+.empty-state-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--gray-dark);
+}
+
+.empty-state-description {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Bulk actions toolbar */
+.bulk-actions {
+    background-color: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.bulk-actions.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.bulk-actions-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bulk-count {
+    font-weight: 600;
+}
+
+.bulk-actions-right {
+    display: flex;
+    gap: 12px;
+}
+
+.bulk-action-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.bulk-action-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.bulk-action-btn.danger {
+    background-color: var(--danger);
+}
+
+.bulk-action-btn.danger:hover {
+    background-color: #d41b5e;
+}
+
+/* Collection creation modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.modal-close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--gray);
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: var(--dark);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-light);
+    transition: var(--transition);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(114, 9, 183, 0.1);
+}
+
+.icon-selector {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.icon-option {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: var(--background);
+    transition: var(--transition);
+}
+
+.icon-option:hover {
+    background-color: var(--gray-light);
+}
+
+.icon-option.selected {
+    background-color: var(--primary);
+    color: white;
+}
+
+.color-selector {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.selected {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);
+}
+
+.modal-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--gray-light);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Enhanced note pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 0;
+}
+
+.page-item {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.page-item:hover {
+    background-color: var(--gray-light);
+}
+
+.page-item.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.page-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-nav {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--background);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.page-nav:hover {
+    background-color: var(--gray-light);
+}
+
+/* Responsive adjustments for saved notes page */
+@media (max-width: 992px) {
+    .subjects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .icon-selector {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .bulk-actions {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .pagination {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 576px) {
+    .subjects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .icon-selector {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

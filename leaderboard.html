@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - Leaderboard</title>
+    <link rel="stylesheet" href="/frontend/css/leaderboard.css">
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <script src="/frontend/js/leaderboard.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> StudyNotes Hub
+                </div>
+                <div class="mobile-toggle" id="mobileToggle">☰</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/frontend/html/index.html"lass="nav-link">
+                        <i>🏠</i> <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link">
+                        <i>📝</i> <span>My Notes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link">
+                        <i>🔍</i> <span>Browse Notes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link">
+                        <i>📈</i> <span>Trending</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link active">
+                        <i>🏆</i> <span>Leaderboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link">
+                        <i>⭐</i> <span>Saved Notes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link">
+                        <i>🤖</i> <span>Study AI</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i>⚙️</i> <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1 class="page-title">Leaderboard</h1>
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search for users">
+                </div>
+            </div>
+            
+            <div class="leaderboard-container">
+                <div class="card">
+                    <div class="leaderboard-tabs">
+                        <div class="tab active">Global</div>
+                        <div class="tab">Your School</div>
+                        <div class="tab">By Subject</div>
+                    </div>
+                    
+                    <div class="leaderboard-filters">
+                        <select class="filter-select">
+                            <option value="all-time">All Time</option>
+                            <option value="this-month">This Month</option>
+                            <option value="this-week">This Week</option>
+                            <option value="today">Today</option>
+                        </select>
+                        
+                        <select class="filter-select">
+                            <option value="all-levels">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </div>
+                    
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>User</th>
+                                <th>Level</th>
+                                <th>Subjects</th>
+                                <th>Streak</th>
+                                <th>Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="rank rank-1">1</div>
+                                </td>
+                                <td>
+                                    <div class="leaderboard-user">
+                                        <div class="author-avatar">SW</div>
+                                        <div class="user-details">
+                                            <div class="user-name">Sarah Williams</div>
+                                            <div class="user-info">California State University</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="badge badge-expert">Expert</div></td>
+                                <td>
+                                    <div class="subject-tag">Computer Science</div>
+                                    <div class="subject-tag">Math</div>
+                                </td>
+                                <td><div class="streak">🔥 28 days</div></td>
+                                <td><div class="points">782</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="rank rank-2">2</div>
+                                </td>
+                                <td>
+                                    <div class="leaderboard-user">
+                                        <div class="author-avatar">MJ</div>
+                                        <div class="user-details">
+                                            <div class="user-name">Mike Johnson</div>
+                                            <div class="user-info">University of Washington</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="badge badge-expert">Expert</div></td>
+                                <td>
+                                    <div class="subject-tag">Physics</div>
+                                    <div class="subject-tag">Engineering</div>
+                                </td>
+                                <td><div class="streak">🔥 15 days</div></td>
+                                <td><div class="points">645</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="rank rank-3">3</div>
+                                </td>
+                                <td>
+                                    <div class="leaderboard-user">
+                                        <div class="author-avatar">AL</div>
+                                        <div class="user-details">
+                                            <div class="user-name">Amy Liu</div>
+                                            <div class="user-info">Stanford University</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="badge badge-intermediate">Intermediate</div></td>
+                                <td>
+                                    <div class="subject-tag">Biology</div>
+                                    <div class="subject-tag">Chemistry</div>
+                                </td>
+                                <td><div class="streak">🔥 19 days</div></td>
+                                <td><div class="points">514</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="rank">4</div>
+                                </td>
+                                <td>
+                                    <div class="leaderboard-user">
+                                        <div class="author-avatar">DP</div>
+                                        <div class="user-details">
+                                            <div class="user-name">David Parker</div>
+                                            <div class="user-info">MIT</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="badge badge-intermediate">Intermediate</div></td>
+                                <td>
+                                    <div class="subject-tag">Computer Science</div>
+                                    <div class="subject-tag">Math</div>
+                                </td>
+                                <td><div class="streak">🔥 12 days</div></td>
+                                <td><div class="points">489</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="rank">5</div>
+                                </td>
+                                <td>
+                                    <div class="leaderboard-user">
+                                        <div class="author-avatar">ET</div>
+                                        <div class="user-details">
+                                            <div class="user-name">Emma Thompson</div>
+                                            <div class="user-info">Columbia University</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="badge badge-intermediate">Intermediate</div></td>
+                                <td>
+                                    <div class="subject-tag">Literature</div>
+                                    <div class="subject-tag">History</div>
+                                </td>
+                                <td><div class="streak">🔥 9 days</div></td>
+                                <td><div class="points">432</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="rank">6</div>
+                                </td>
+                                <td>
+                                    <div class="leaderboard-user">
+                                        <div class="author-avatar">RG</div>
+                                        <div class="user-details">
+                                            <div class="user-name">Robert Garcia</div>
+                                            <div class="user-info">UCLA</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="badge badge-expert">Expert</div></td>
+                                <td>
+                                    <div class="subject-tag">Chemistry</div>
+                                    <div class="subject-tag">Biology</div>
+                                </td>
+                                <td><div class="streak">🔥 7 days</div></td>
+                                <td><div class="points">412</div></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="rank">7</div>
+                                </td>
+                                <td>
+                                    <div class="leaderboard-user">
+                                        <div class="author-avatar">JW</div>
+                                        <div class="user-details">
+                                            <div class="user-name">Jessica Wang</div>
+                                            <div class="user-info">UC Berkeley</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="badge badge-intermediate">Intermediate</div></td>
+                                <td>
+                                    <div class="subject-tag">Physics</div>
+                                    <div class="subject-tag">Math</div>
+                                </td>
+                                <td><div class="streak">🔥 14 days</div></td>

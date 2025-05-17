@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyNotes Hub - My Notes</title>
+    <link rel="stylesheet" href="/frontend/css/style.css">
+    <link rel="stylesheet" href="/frontend/css/mynotes.css">
+    <script src="/frontend/js/mynotes.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <span>📚</span> StudyNotes Hub
+                </div>
+                <div class="mobile-toggle" id="mobileToggle">☰</div>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="/frontend/html/index.html" class="nav-link">
+                        <i>🏠</i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/mynotes.html" class="nav-link active">
+                        <i>📝</i> My Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/browsenote.html" class="nav-link">
+                        <i>🔍</i> Browse Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/trending.html" class="nav-link">
+                        <i>📈</i> Trending
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/leaderboard.html" class="nav-link">
+                        <i>🏆</i> Leaderboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/savednotes.html" class="nav-link">
+                        <i>⭐</i> Saved Notes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/frontend/html/studyai.html" class="nav-link">
+                        <i>🤖</i> Study AI
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i>⚙️</i> Settings
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="user-info">
+                <div class="avatar">JS</div>
+                <div class="user-details">
+                    <div class="user-name">John Smith</div>
+                    <div class="user-role">Computer Science, Senior</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <div class="page-title">
+                    <h1>My Notes</h1>
+                    <p>Manage all your study notes in one place</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-outline" id="filterBtn">Filter</button>
+                    <button class="btn btn-primary" id="createNoteBtn">Create New Note</button>
+                </div>
+            </div>
+            
+            <!-- Filter Panel -->
+            <div class="filter-panel" id="filterPanel">
+                <div class="filter-header">
+                    <h3>Filter Options</h3>
+                    <span class="close-filter" id="closeFilter">×</span>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label>Subject</label>
+                        <select class="filter-select" id="subjectFilter">
+                            <option value="">All Subjects</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Note Type</label>
+                        <select class="filter-select" id="typeFilter">
+                            <option value="">All Types</option>
+                            <option value="lecture">Lecture Notes</option>
+                            <option value="summary">Summary</option>
+                            <option value="cheatsheet">Cheat Sheet</option>
+                            <option value="exam">Exam Prep</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        
+                        <select class="filter-select" id="sortFilter">
+                            <option value="recent">Most Recent</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" id="resetFiltersBtn">Reset</button>
+                        <button class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Note Statistics -->
+            <div class="notes-stats-container">
+                <div class="notes-stat-card">
+                    <div class="notes-stat-icon">📝</div>
+                    <div class="notes-stat-content">
+                        <div class="notes-stat-value">12</div>
+                        <div class="notes-stat-label">Total Notes</div>
+                    </div>
+                </div>
+                <div class="notes-stat-card">
+                    <div class="notes-stat-icon">👁️</div>
+                    <div class="notes-stat-content">
+                        <div class="notes-stat-value">2.4k</div>
+                        <div class="notes-stat-label">Total Views</div>
+                    </div>
+                </div>
+                <div class="notes-stat-card">
+                    <div class="notes-stat-icon">⭐</div>
+                    <div class="notes-stat-content">
+                        <div class="notes-stat-value">4.7</div>
+                        <div class="notes-stat-label">Avg Rating</div>
+                    </div>
+                </div>
+                <div class="notes-stat-card">
+                    <div class="notes-stat-icon">💬</div>
+                    <div class="notes-stat-content">
+                        <div class="notes-stat-value">36</div>
+                        <div class="notes-stat-label">Comments</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notes Tab Navigation -->
+            <div class="notes-tabs">
+                <div class="tab active" data-tab="all">All Notes (12)</div>
+                <div class="tab" data-tab="public">Public (8)</div>
+                <div class="tab" data-tab="private">Private (4)</div>
+                <div class="tab" data-tab="favorites">Favorites (6)</div>
+                <div class="tab" data-tab="archived">Archived (2)</div>
+            </div>
+            
+            <!-- Search and View Toggle -->
+            <div class="notes-actions">
+                <div class="notes-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search in your notes" id="notesSearch">
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" id="gridViewBtn">
+                        <span>▦</span>
+                    </button>
+                    <button class="view-btn" data-view="list" id="listViewBtn">
+                        <span>☰</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Notes Grid -->
+            <div class="notes-grid" id="notesGrid">
+                <!-- Computer Science Notes -->
+                <div class="note-item" data-subject="computer-science" data-type="lecture">
+                    <div class="note-header" style="background-color: var(--primary);">
+                        <div class="note-actions">
+                            <button class="note-action-btn" title="Edit"><span>✏️</span></button>
+                            <button class="note-action-btn" title="Share"><span>📤</span></button>
+                            <button class="note-action-btn" title="More"><span>⋮</span></button>
+                        </div>
+                    </div>
+                    <div class="note-body">
+                        <div class="note-title">Data Structures & Algorithms</div>
+                        <div class="note-subject">Computer Science • CS301</div>
+                        <div class="note-badges">
+                            <span class="note-badge">Lecture</span>
+                            <span class="note-badge">Public</span>
+                        </div>
+                        <div class="note-preview">
+                            Binary trees, heap sort, graph algorithms and their applications...
+                        </div>
+                    </div>
+                    <div class="note-footer">
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 124</div>
+                            <div class="stat"><span>⭐</span> 4.8</div>
+                            <div class="stat"><span>💬</span> 12</div>
+                        </div>
+                        <div class="note-date">May 2, 2025</div>
+                    </div>
+                </div>
+                
+                <!-- Mathematics Note -->
+                <div class="note-item" data-subject="mathematics" data-type="summary">
+                    <div class="note-header" style="background-color: var(--accent);">
+                        <div class="note-actions">
+                            <button class="note-action-btn" title="Edit"><span>✏️</span></button>
+                            <button class="note-action-btn" title="Share"><span>📤</span></button>
+                            <button class="note-action-btn" title="More"><span>⋮</span></button>
+                        </div>
+                    </div>
+                    <div class="note-body">
+                        <div class="note-title">Linear Algebra Concepts</div>
+                        <div class="note-subject">Mathematics • MATH245</div>
+                        <div class="note-badges">
+                            <span class="note-badge">Summary</span>
+                            <span class="note-badge">Public</span>
+                        </div>
+                        <div class="note-preview">
+                            Vector spaces, linear transformations, determinants, eigenvalues...
+                        </div>
+                    </div>
+                    <div class="note-footer">
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 89</div>
+                            <div class="stat"><span>⭐</span> 4.5</div>
+                            <div class="stat"><span>💬</span> 8</div>
+                        </div>
+                        <div class="note-date">April 28, 2025</div>
+                    </div>
+                </div>
+                
+                <!-- Physics Note -->
+                <div class="note-item" data-subject="physics" data-type="cheatsheet">
+                    <div class="note-header" style="background-color: var(--warning);">
+                        <div class="note-actions">
+                            <button class="note-action-btn" title="Edit"><span>✏️</span></button>
+                            <button class="note-action-btn" title="Share"><span>📤</span></button>
+                            <button class="note-action-btn" title="More"><span>⋮</span></button>
+                        </div>
+                    </div>
+                    <div class="note-body">
+                        <div class="note-title">Quantum Mechanics</div>
+                        <div class="note-subject">Physics • PHYS302</div>
+                        <div class="note-badges">
+                            <span class="note-badge">Cheat Sheet</span>
+                            <span class="note-badge">Public</span>
+                        </div>
+                        <div class="note-preview">
+                            Wave functions, Schrödinger equation, Heisenberg uncertainty principle...
+                        </div>
+                    </div>
+                    <div class="note-footer">
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 156</div>
+                            <div class="stat"><span>⭐</span> 4.9</div>
+                            <div class="stat"><span>💬</span> 15</div>
+                        </div>
+                        <div class="note-date">April 24, 2025</div>
+                    </div>
+                </div>
+                
+                <!-- Computer Science Note 2 -->
+                <div class="note-item" data-subject="computer-science" data-type="exam">
+                    <div class="note-header" style="background-color: var(--primary);">
+                        <div class="note-actions">
+                            <button class="note-action-btn" title="Edit"><span>✏️</span></button>
+                            <button class="note-action-btn" title="Share"><span>📤</span></button>
+                            <button class="note-action-btn" title="More"><span>⋮</span></button>
+                        </div>
+                    </div>
+                    <div class="note-body">
+                        <div class="note-title">Web Development Frameworks</div>
+                        <div class="note-subject">Computer Science • CS405</div>
+                        <div class="note-badges">
+                            <span class="note-badge">Exam Prep</span>
+                            <span class="note-badge">Private</span>
+                        </div>
+                        <div class="note-preview">
+                            React, Vue, Angular, and backend frameworks comparison...
+                        </div>
+                    </div>
+                    <div class="note-footer">
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 0</div>
+                            <div class="stat"><span>⭐</span> 0</div>
+                            <div class="stat"><span>💬</span> 0</div>
+                        </div>
+                        <div class="note-date">April 18, 2025</div>
+                    </div>
+                </div>
+                
+                <!-- Chemistry Note -->
+                <div class="note-item" data-subject="chemistry" data-type="lecture">
+                    <div class="note-header" style="background-color: #10b981;">
+                        <div class="note-actions">
+                            <button class="note-action-btn" title="Edit"><span>✏️</span></button>
+                            <button class="note-action-btn" title="Share"><span>📤</span></button>
+                            <button class="note-action-btn" title="More"><span>⋮</span></button>
+                        </div>
+                    </div>
+                    <div class="note-body">
+                        <div class="note-title">Organic Reactions</div>
+                        <div class="note-subject">Chemistry • CHEM320</div>
+                        <div class="note-badges">
+                            <span class="note-badge">Lecture</span>
+                            <span class="note-badge">Public</span>
+                        </div>
+                        <div class="note-preview">
+                            Substitution reactions, elimination reactions, addition reactions...
+                        </div>
+                    </div>
+                    <div class="note-footer">
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 67</div>
+                            <div class="stat"><span>⭐</span> 4.6</div>
+                            <div class="stat"><span>💬</span> 5</div>
+                        </div>
+                        <div class="note-date">April 12, 2025</div>
+                    </div>
+                </div>
+                
+                <!-- Physics Note 2 -->
+                <div class="note-item" data-subject="physics" data-type="summary">
+                    <div class="note-header" style="background-color: var(--warning);">
+                        <div class="note-actions">
+                            <button class="note-action-btn" title="Edit"><span>✏️</span></button>
+                            <button class="note-action-btn" title="Share"><span>📤</span></button>
+                            <button class="note-action-btn" title="More"><span>⋮</span></button>
+                        </div>
+                    </div>
+                    <div class="note-body">
+                        <div class="note-title">Classical Mechanics</div>
+                        <div class="note-subject">Physics • PHYS201</div>
+                        <div class="note-badges">
+                            <span class="note-badge">Summary</span>
+                            <span class="note-badge">Public</span>
+                        </div>
+                        <div class="note-preview">
+                            Newton's laws, conservation of energy, momentum, and angular momentum...
+                        </div>
+                    </div>
+                    <div class="note-footer">
+                        <div class="note-stats">
+                            <div class="stat"><span>👁️</span> 98</div>
+                            <div class="stat"><span>⭐</span> 4.7</div>
+                            <div class="stat"><span>💬</span> 9</div>
+                        </div>
+                        <div class="note-date">April 5, 2025</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- More Notes Button -->
+            <div class="load-more">
+                <button class="btn btn-outline" id="loadMoreBtn">Load More Notes</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Create Note Modal -->
+    <div class="modal" id="createNoteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create New Note</h3>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="noteTitle">Title</label>
+                    <input type="text" id="noteTitle" class="form-input" placeholder="Enter note title">
+                </div>
+                <div class="form-group">
+                    <label for="noteSubject">Subject</label>
+                    <select id="noteSubject" class="form-input">
+                        <option value="">Select a subject</option>
+                        <option value="computer-science">Computer Science</option>
+                        <option value="mathematics">Mathematics</option>
+                        <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option>
+                        <option value="biology">Biology</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="noteType">Note Type</label>
+                    <select id="noteType" class="form-input">
+                        <option value="">Select a type</option>
+                        <option value="lecture">Lecture Notes</option>
+                        <option value="summary">Summary</option>
+                        <option value="cheatsheet">Cheat Sheet</option>
+                        <option value="exam">Exam Prep</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="noteVisibility">Visibility</label>
+                    <select id="noteVisibility" class="form-input">
+                        <option value="public">Public</option>
+                        <option value="private">Private</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="noteContent">Content</label>
+                    <textarea id="noteContent" class="form-textarea" placeholder="Write your note content here..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Attachments</label>
+                    <div class="file-upload">
+                        <input type="file" id="noteAttachment" class="file-input">
+                        <label for="noteAttachment" class="file-label">
+                            <span>📎</span> Choose files
+                        </label>
+                        <span class="file-info">No file chosen</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelNoteBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveNoteBtn">Create Note</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Assistant Panel -->
+    <div class="ai-assistant">
+        <div class="ai-bubble" id="aiToggle">
+            🤖
+            <div class="ai-notification">1</div>
+        </div>
+        <div class="ai-panel" id="aiPanel">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span>🤖</span> Study AI Assistant
+                </div>
+                <div class="ai-close" id="aiClose">×</div>
+            </div>
+            <div class="ai-content" id="aiContent">
+                <div class="ai-message">
+                    <div class="ai-avatar">🤖</div>
+                    <div class="ai-bubble-message">
+                        Hello John! Do you need help organizing your notes or creating a new one?
+                    </div>
+                </div>
+                <div class="ai-suggestion-chips">
+                    <div class="ai-chip">Organize notes by subject</div>
+                    <div class="ai-chip">Suggest improvements</div>
+                    <div class="ai-chip">Summarize my notes</div>
+                </div>
+            </div>
+            <div class="ai-input">
+                <input type="text" class="ai-input-field" placeholder="Ask me anything..." id="aiInputField">
+                <button class="ai-send" id="aiSendBtn">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="my-notes.js"></script>
+</body>
+</html>
